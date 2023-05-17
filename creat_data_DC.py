@@ -90,7 +90,7 @@ def creat_data(datafile, cellfile):
     processed_data_file_train = 'data/processed/' + datasets + '_train.pt'
 
     if ((not os.path.isfile(processed_data_file_train))):
-        df = pd.read_csv('data/independent_set/' + datasets + '.csv')
+        df = pd.read_csv('data/' + datasets + '.csv')
         drug1, drug2, cell, label = list(df['drug1']), list(df['drug2']), list(df['cell']), list(df['label'])
         drug1, drug2, cell, label = np.asarray(drug1), np.asarray(drug2), np.asarray(cell), np.asarray(label)
         # make data PyTorch Geometric ready
@@ -109,7 +109,7 @@ def creat_data(datafile, cellfile):
 if __name__ == "__main__":
     # datafile = 'prostate'
     cellfile = 'data/independent_set/independent_cell_features_954.csv'
-    #da = ['new_labels_0_10']
-    da = ['independent_input']
+    da = ['new_labels_0_10']
+    #da = ['independent_input']
     for datafile in da:
         creat_data(datafile, cellfile)
